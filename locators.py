@@ -7,6 +7,8 @@ class Locators:
                  partial_link_text=None, tag_name=None, class_name=None,
                  css_selector=None):
 
+        self.test_git_operations = "I'll be gone soon!"
+
         self.id = id
 
         self.name = name
