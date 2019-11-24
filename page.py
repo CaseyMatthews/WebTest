@@ -1,7 +1,7 @@
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-class BasePage:
+class Page:
 
     def __init__(self, url, driver):
         """

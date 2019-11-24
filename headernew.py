@@ -1,9 +1,9 @@
-import basepage
+from page import Page
 from selenium import webdriver
 from elementmetadata import ElementMetaData
 
 
-class Header(basepage.BasePage):
+class Header(Page):
 
     def __init__(self, url, driver):
 
@@ -57,4 +57,4 @@ if __name__ == "__main__":
 
     hdr.hover_over(hdr.elements['social-drop-down'])
 
-    hdr.click(hdr.elements['irc-link'])
+    hdr.click(hdr.elements['twitter-link'])

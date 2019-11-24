@@ -1,8 +1,8 @@
-import basepage
+from page import Page
 from selenium import webdriver
 
 
-class Header(basepage.BasePage):
+class Header(Page):
 
     def __init__(self, url, driver):
 
