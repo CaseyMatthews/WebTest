@@ -204,10 +204,16 @@ class Header(Page):
 
 if __name__ == "__main__":
 
-    pass
+    hdr = Header("http://www.python.org", webdriver.Chrome)
 
-    #hdr = Header("http://www.python.org", webdriver.Chrome)
+    #hdr.twitter_link.print()
 
-    #hdr.hover_over(hdr.nav_about)
+    #hdr.social_drop_down.print()
 
-    #hdr.click(hdr.nav_about_apps)
+    #hdr.hover_over(hdr.social_drop_down)
+
+    #hdr.click(hdr.twitter_link)
+
+    for _ in dir(hdr):
+
+        print(_)

@@ -1,4 +1,5 @@
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import ElementNotInteractableException, NoSuchElementException
 
 
 class Page:
@@ -19,6 +20,20 @@ class Page:
 
         self.driver.implicitly_wait(10)  # Driver actions time out after 10 seconds.
 
+    #def __getattribute__(self, item):
+
+        #item = object.__getattribute__(self, item)
+
+        #try:
+
+        #    item = self.__getattr__(self, Page._get_element)(item)
+
+        #except NoSuchElementException:
+
+        #    print("Not a web element.")
+
+        #return item
+
     ########################
     # Public action methods.
     ########################
@@ -33,7 +48,15 @@ class Page:
 
     def click(self, element):
 
-        self._get_element(element).click()
+        element = self._get_element(element)
+
+        if element.is_displayed():
+
+            element.click()
+
+        else:
+
+            raise ElementNotInteractableException
 
     def hover_over(self, element):
 
@@ -74,5 +97,5 @@ class Page:
         elif element.css_selector:
             return self.driver.find_element(by='css selector', value=element.css_selector)
         else:
-            print("Element not defined.")
-            return None
+
+            pass
