@@ -1,5 +1,6 @@
 import basepage
 from selenium import webdriver
+from elementmetadata import ElementMetaData
 
 
 class Header(basepage.BasePage):
@@ -8,41 +9,52 @@ class Header(basepage.BasePage):
 
         super().__init__(url, driver)
 
+        # TODO: Look into converting dictionary to class member variables.
         self.elements = {
 
-            'sister-site-python': 'python-meta',
+            # Sister site links.
 
-            'sister-site-psf': 'psf-meta',
+            'sister-site-python': ElementMetaData(class_name='python-meta'),
 
-            'sister-site-docs': 'docs-meta',
+            'sister-site-psf': ElementMetaData(class_name='psf-meta'),
 
-            'sister-site-pypi': 'pypi-meta',
+            'sister-site-docs': ElementMetaData(class_name='docs-meta'),
 
-            'sister-site-jobs': 'jobs-meta',
+            'sister-site-pypi': ElementMetaData(class_name='pypi-meta'),
 
-            'sister-site-shop': 'shop-meta',
+            'sister-site-jobs': ElementMetaData(class_name='jobs-meta'),
 
-            # Miscellaneous header elements
+            'sister-site-shop': ElementMetaData(class_name='shop-meta'),
 
-            'site-logo': 'python-logo',
+            # Miscellaneous header elements.
 
-            'donate-button': 'donate-button',
+            'site-logo': ElementMetaData(class_name='python-logo'),
 
-            }
+            'donate-button': ElementMetaData(class_name='donate-button'),
 
-    # Action methods.
+            # Search bar elements.
 
-    def click_element(self, element):
+            'search-field': ElementMetaData(class_name='search-field'),
 
-        self._get_element_by_class_name(element).click()
+            'search-submit': ElementMetaData(class_name='search-button'),
 
-    def _get_element_by_class_name(self, class_name):
+            # Social media links.
 
-        return self.driver.find_element_by_class_name(class_name)
+            'social-drop-down': ElementMetaData(class_name='winkwink-nudgenudge'),
+
+            'facebook-link': ElementMetaData(class_name='icon-facebook'),
+
+            'twitter-link': ElementMetaData(class_name='icon-twitter'),
+
+            'irc-link': ElementMetaData(class_name='icon-freenode')
+
+            }  # End header elements.
 
 
 if __name__ == "__main__":
 
-    h = Header('http://www.python.org', webdriver.Chrome)
+    hdr = Header('http://www.python.org', webdriver.Chrome)
 
-    h.click_element(h.elements['sister-site-docs'])
+    hdr.hover_over(hdr.elements['social-drop-down'])
+
+    hdr.click(hdr.elements['irc-link'])
