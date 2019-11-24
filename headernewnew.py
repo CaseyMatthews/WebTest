@@ -97,7 +97,7 @@ class Header(Page):
 
         self.nav_downloads_windows = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[3]/a')
 
-        self.nav_downloads_maco = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[4]/a')
+        self.nav_downloads_mac = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[4]/a')
 
         self.nav_downloads_other_platforms = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[5]/a')
 
@@ -204,8 +204,10 @@ class Header(Page):
 
 if __name__ == "__main__":
 
-    hdr = Header("http://www.python.org", webdriver.Chrome)
+    pass
 
-    hdr.hover_over(hdr.nav_about)
+    #hdr = Header("http://www.python.org", webdriver.Chrome)
 
-    hdr.click(hdr.nav_about_apps)
+    #hdr.hover_over(hdr.nav_about)
+
+    #hdr.click(hdr.nav_about_apps)

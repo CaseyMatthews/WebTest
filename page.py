@@ -23,6 +23,14 @@ class Page:
     # Public action methods.
     ########################
 
+    def close(self):
+
+        self.driver.close()
+
+    def get(self, url):
+
+        self.driver.get(url)
+
     def click(self, element):
 
         self._get_element(element).click()
@@ -34,6 +42,12 @@ class Page:
         hover = ActionChains(self.driver).move_to_element(element)
 
         hover.perform()
+
+    def send_keys(self, element, key_sequence):
+
+        element = self._get_element(element)
+
+        element.send_keys(key_sequence)
 
     #########################
     # Private helper methods.
