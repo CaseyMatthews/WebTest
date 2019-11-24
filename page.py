@@ -11,13 +11,13 @@ class Page:
         :param driver: A selenium web driver (IE, Firefox, Chrome).
         """
 
-        self.url = url
+        self.url = url  # Address of web page to open.
 
-        self.driver = driver()
+        self.driver = driver()  # Selenium web driver instance.
 
-        self.driver.get(url)
+        self.driver.get(url)  # Open the web page in the browser.
 
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(10)  # Driver actions time out after 10 seconds.
 
     ########################
     # Public action methods.
