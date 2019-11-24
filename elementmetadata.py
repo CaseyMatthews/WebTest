@@ -34,6 +34,28 @@ class ElementMetaData:
         print("       Class Name: ", self.class_name)
         print("     CSS Selector: ", self.css_selector)
 
+    def _get_element(self):
+
+        if item.id:
+            return self.driver.find_element(by='id', value=item.id)
+        elif item.xpath:
+            return self.driver.find_element(by='xpath', value=item.xpath)
+        elif item.link_text:
+            return self.driver.find_element(by='link text', value=item.link_text)
+        elif item.partial_link_text:
+            return self.driver.find_element(by='partial link text',
+                                            value=item.partial_link_text)
+        elif item.name:
+            return self.driver.find.element(by='name', value=item.name)
+        elif item.tag_name:
+            return self.driver.find_element(by='tag name', value=item.tag_name)
+        elif item.class_name:
+            return self.driver.find_element(by='class name', value=item.class_name)
+        elif item.css_selector:
+            return self.driver.find_element(by='css selector', value=item.css_selector)
+        else:
+            raise NoSuchElementException
+
 
 if __name__ == "__main__":
 
