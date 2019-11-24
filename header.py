@@ -1,105 +1,229 @@
-from page import Page
+from pageobject import PageObject
 from selenium import webdriver
+from elementmetadata import ElementMetaData
 
 
-class Header(Page):
+class Header(PageObject):
 
-    def __init__(self, url, driver):
+    def __init__(self, driver):
 
-        super().__init__(url, driver)
+        super().__init__(driver)
 
-    # Sister site links.
+        ####################
+        # Sister site links.
+        ####################
 
-    def _get_psf_link(self):
+        self.sister_site_python = ElementMetaData(class_name='python-meta')
 
-        return self.driver.find_element_by_class_name('psf-meta')
+        self.sister_site_psf = ElementMetaData(class_name='psf-meta')
 
-    def _get_python_link(self):
+        self.sister_site_docs = ElementMetaData(class_name='docs-meta')
 
-        return self.driver.find_element_by_class_name('python-meta')
+        self.sister_site_pypi = ElementMetaData(class_name='pypi-meta')
 
-    def _get_docs_link(self):
+        self.sister_site_jobs = ElementMetaData(class_name='jobs-meta')
 
-        return self.driver.find_element_by_class_name('docs-meta')
+        self.sister_site_shop = ElementMetaData(class_name='shop-meta')
 
-    def _get_pypi_link(self):
+        ################################
+        # Miscellaneous header elements.
+        ################################
 
-        return self.driver.find_element_by_class_name('pypi-meta')
+        self.site_logo = ElementMetaData(class_name='python-logo')
 
-    def _get_jobs_link(self):
+        self.donate_button = ElementMetaData(class_name='donate-button')
 
-        return self.driver.find_element_by_class_name('jobs-meta')
+        ######################
+        # Search bar elements.
+        ######################
 
-    def _get_shop_link(self):
+        self.search_field = ElementMetaData(class_name='search-field')
 
-        return self.driver.find_element_by_class_name('shop-meta')
+        self.search_submit = ElementMetaData(class_name='search-button')
 
-    # Miscellaneous header elements.
+        #####################
+        # Social media links.
+        #####################
 
-    def _get_python_logo_link(self):
+        self.social_drop_down = ElementMetaData(class_name='winkwink-nudgenudge')
 
-        return self.driver.find_element_by_class_name('python-logo')
+        self.facebook_link = ElementMetaData(class_name='icon-facebook')
 
-    def _get_donate_button_link(self):
+        self.twitter_link = ElementMetaData(class_name='icon-twitter')
 
-        return self.driver.find_element_by_class_name('donate-button')
+        self.irc_link = ElementMetaData(class_name='icon-freenode')
 
-    # Search bar elements.
+        ##########################
+        # Navigation bar elements.
+        ##########################
 
-    def _get_search_field(self):
+        self.nav_about = ElementMetaData(id='about')
 
-        return self.driver.find_element_by_class_name('search-field')
+        self.nav_downloads = ElementMetaData(id='downloads')
 
-    def _get_search_submit_button(self):
+        self.nav_documentation = ElementMetaData(id='documentation')
 
-        return self.driver.find_element_by_class_name('search-button')
+        self.nav_community = ElementMetaData(id='community')
 
-    # Social media links.
+        self.nav_success_stories = ElementMetaData(id='success-stories')
 
-    def _get_social_media_drop_down(self):
+        self.nav_news = ElementMetaData(id='news')
 
-        return self.driver.find_element_by_class_name('winkwink-nudgenudge')
+        self.nav_events = ElementMetaData(id='events')
 
-    def _get_facebook_link(self):
+        ##############################
+        # Navigation bar sub-elements.
+        ##############################
 
-        return self.driver.find_element_by_class_name('icon-facebook')
+        # About sub-menu elements.
 
-    def _get_twitter_link(self):
+        self.nav_about_apps = ElementMetaData(xpath='//*[@id="about"]/ul/li[1]/a')
 
-        return self.driver.find_element_by_class_name('icon-twitter')
+        self.nav_about_quotes = ElementMetaData(xpath='//*[@id="about"]/ul/li[2]/a')
 
-    def _get_irc_chat_link(self):
+        self.nav_about_getting_started = ElementMetaData(xpath='//*[@id="about"]/ul/li[3]/a')
 
-        return self.driver.find_element_by_class_name('icon-freenode')
+        self.nav_about_help = ElementMetaData(xpath='//*[@id="about"]/ul/li[4]/a')
 
-    # Sister site link actions.
+        self.nav_about_py_brochure = ElementMetaData(xpath='//*[@id="about"]/ul/li[5]/a')
 
-    def click_psf_link(self):
+        self.nav_about_learn_more = ElementMetaData(xpath='//*[@id="about"]/ul/li[6]/p/a')
 
-        self._get_psf_link().click()
+        # Downloads sub-menu elements.
 
-    def click_python_link(self):
+        self.nav_downloads_all_releases = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[1]/a')
 
-        self._get_python_link().click()
+        self.nav_downloads_source_code = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[2]/a')
 
-    def click_docs_link(self):
+        self.nav_downloads_windows = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[3]/a')
 
-        self._get_docs_link().click()
+        self.nav_downloads_mac = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[4]/a')
 
-    def click_pypi_link(self):
+        self.nav_downloads_other_platforms = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[5]/a')
 
-        self._get_pypi_link().click()
+        self.nav_downloads_license = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[6]/a')
 
-    def click_jobs_link(self):
+        self.nav_downloads_alt_imps = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[7]/a')
 
-        self._get_jobs_link().click()
+        self.nav_downloads_dwnld_windows = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[8]/div[3]/p[1]/a')
 
-    def click_shop_link(self):
+        # Documentation sub-menu elements.
 
-        self._get_shop_link().click()
+        self.nav_documentation_docs = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[1]/a')
+
+        self.nav_documentation_audio_visual = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[2]/a')
+
+        self.nav_documentation_beginners_guide = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[3]/a')
+
+        self.nav_documentation_devs_guide = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[4]/a')
+
+        self.nav_documentation_faq = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[5]/a')
+
+        self.nav_documentation_non_english_docs = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[6]/a')
+
+        self.nav_documentation_pep_index = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[7]/a')
+
+        self.nav_documentation_py_books = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[8]/a')
+
+        self.nav_documentation_py_essays = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[9]/a')
+
+        self.nav_documentation_py3_docs = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[10]/p[2]/a[1]')
+
+        self.nav_documentation_py2_docs = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[10]/p[2]/a[2]')
+
+        # Community sub-menu elements.
+
+        self.nav_comm_survey = ElementMetaData(xpath='//*[@id="community"]/ul/li[1]/a')
+
+        self.nav_comm_diversity = ElementMetaData(xpath='//*[@id="community"]/ul/li[2]/a')
+
+        self.nav_comm_mailing_lists = ElementMetaData(xpath='//*[@id="community"]/ul/li[3]/a')
+
+        self.nav_comm_irc = ElementMetaData(xpath='//*[@id="community"]/ul/li[4]/a')
+
+        self.nav_comm_forums = ElementMetaData(xpath='//*[@id="community"]/ul/li[5]/a')
+
+        self.nav_comm_annual_impact_report = ElementMetaData(xpath='//*[@id="community"]/ul/li[6]/a')
+
+        self.nav_comm_py_conferences = ElementMetaData(xpath='//*[@id="community"]/ul/li[7]/a')
+
+        self.nav_comm_spec_interest_groups = ElementMetaData(xpath='//*[@id="community"]/ul/li[8]/a')
+
+        self.nav_comm_py_logo = ElementMetaData(xpath='//*[@id="community"]/ul/li[9]/a')
+
+        self.nav_comm_py_wiki = ElementMetaData(xpath='//*[@id="community"]/ul/li[10]/a')
+
+        self.nav_comm_merchandise = ElementMetaData(xpath='//*[@id="community"]/ul/li[11]/a')
+
+        self.nav_comm_awards = ElementMetaData(xpath='//*[@id="community"]/ul/li[12]/a')
+
+        self.nav_comm_code_of_conduct = ElementMetaData(xpath='//*[@id="community"]/ul/li[13]/a')
+
+        # Success stories sub-menu elements.
+
+        self.nav_success_stories_arts = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[1]/a')
+
+        self.nav_success_stories_business = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[2]/a')
+
+        self.nav_success_stories_education = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[3]/a')
+
+        self.nav_success_stories_engineering = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[4]/a')
+
+        self.nav_success_stories_government = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[5]/a')
+
+        self.nav_success_stories_scientific = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[6]/a')
+
+        self.nav_success_stories_sw_dev = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[7]/a')
+
+        self.nav_success_stories_microsoft = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[8]/p/a')
+
+        # News sub-menu elements.
+
+        self.nav_news_py_news = ElementMetaData(xpath='//*[@id="news"]/ul/li[1]/a')
+
+        self.nav_news_psf_newsletter = ElementMetaData(xpath='//*[@id="news"]/ul/li[2]/a')
+
+        self.nav_news_community_news = ElementMetaData(xpath='//*[@id="news"]/ul/li[3]/a')
+
+        self.nav_news_psf_news = ElementMetaData(xpath='//*[@id="news"]/ul/li[4]/a')
+
+        self.nav_news_pycon_news = ElementMetaData(xpath='//*[@id="news"]/ul/li[5]/a')
+
+        # Events sub-menu elements.
+
+        self.nav_events_py_events = ElementMetaData(xpath='//*[@id="events"]/ul/li[1]/a')
+
+        self.nav_events_user_group_events = ElementMetaData(xpath='//*[@id="events"]/ul/li[2]/a')
+
+        self.nav_events_py_events_archive = ElementMetaData(xpath='//*[@id="events"]/ul/li[3]/a')
+
+        self.nav_events_user_group_events_archive = ElementMetaData(xpath='//*[@id="events"]/ul/li[4]/a')
+
+        self.nav_events_submit_event = ElementMetaData(xpath='//*[@id="events"]/ul/li[5]/a')
 
 
 if __name__ == "__main__":
 
-    h = Header('http://www.python.org', webdriver.Chrome)
+    chrome = webdriver.Chrome()
 
+    hdr = Header(chrome)
+
+    chrome.get("http://www.python.org")
+
+    hdr.sister_site_docs.click()
+
+    chrome.back()
+
+    hdr.sister_site_psf.click()
+
+    chrome.back()
+
+    hdr.hover_over(hdr.social_drop_down)
+
+    #hdr.twitter_link.print()
+
+    #hdr.social_drop_down.print()
+
+    #hdr.hover_over(hdr.social_drop_down)
+
+    #hdr.click(hdr.twitter_link)

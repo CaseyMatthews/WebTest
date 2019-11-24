@@ -20,21 +20,6 @@ class Page:
 
         self.driver.implicitly_wait(10)  # Driver actions time out after 10 seconds.
 
-    #def __getattribute__(self, item):
-
-        #item = object.__getattribute__(self, item)
-
-        #try:
-
-        #    item = self.__getattr__(self, Page._get_element)(item)
-
-        #except NoSuchElementException:
-
-        #    print("Not a web element.")
-
-        #return item
-
-
     ########################
     # Public action methods.
     ########################
