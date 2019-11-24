@@ -105,6 +105,8 @@ class Header(Page):
 
         self.nav_downloads_alt_imps = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[7]/a')
 
+        self.nav_downloads_dwnld_windows = ElementMetaData(xpath='//*[@id="downloads"]/ul/li[8]/div[3]/p[1]/a')
+
         # Documentation sub-menu elements.
 
         self.nav_documentation_docs = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[1]/a')
@@ -124,6 +126,10 @@ class Header(Page):
         self.nav_documentation_py_books = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[8]/a')
 
         self.nav_documentation_py_essays = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[9]/a')
+
+        self.nav_documentation_py3_docs = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[10]/p[2]/a[1]')
+
+        self.nav_documentation_py2_docs = ElementMetaData(xpath='//*[@id="documentation"]/ul/li[10]/p[2]/a[2]')
 
         # Community sub-menu elements.
 
@@ -168,6 +174,8 @@ class Header(Page):
         self.nav_success_stories_scientific = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[6]/a')
 
         self.nav_success_stories_sw_dev = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[7]/a')
+
+        self.nav_success_stories_microsoft = ElementMetaData(xpath='//*[@id="success-stories"]/ul/li[8]/p/a')
 
         # News sub-menu elements.
 
