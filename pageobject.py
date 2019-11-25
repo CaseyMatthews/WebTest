@@ -1,6 +1,5 @@
 from selenium.common.exceptions import NoSuchElementException
 from elementmetadata import ElementMetaData
-from selenium.webdriver.common.action_chains import ActionChains
 
 
 class PageObject:
@@ -19,12 +18,6 @@ class PageObject:
             item = object.__getattribute__(self, '_get_element')(item)
 
         return item
-
-    def hover_over(self, element):
-
-        hover = ActionChains(self.driver).move_to_element(element)
-
-        hover.perform()
 
     # TODO: Implement error handling and selector priority.
     def _get_element(self, element):

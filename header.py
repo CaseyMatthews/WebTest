@@ -1,6 +1,6 @@
 from pageobject import PageObject
-from selenium import webdriver
 from elementmetadata import ElementMetaData
+from webdriver import WebDriver
 
 
 class Header(PageObject):
@@ -204,7 +204,7 @@ class Header(PageObject):
 
 if __name__ == "__main__":
 
-    chrome = webdriver.Chrome()
+    chrome = WebDriver()
 
     hdr = Header(chrome)
 
@@ -218,12 +218,8 @@ if __name__ == "__main__":
 
     chrome.back()
 
-    hdr.hover_over(hdr.social_drop_down)
+    chrome.hover_over(hdr.social_drop_down)
 
-    #hdr.twitter_link.print()
+    chrome.hover_over(hdr.social_drop_down)
 
-    #hdr.social_drop_down.print()
-
-    #hdr.hover_over(hdr.social_drop_down)
-
-    #hdr.click(hdr.twitter_link)
+    hdr.twitter_link.click()

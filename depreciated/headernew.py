@@ -1,4 +1,4 @@
-from page import Page
+from depreciated.page import Page
 from selenium import webdriver
 from elementmetadata import ElementMetaData
 
