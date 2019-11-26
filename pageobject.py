@@ -62,5 +62,3 @@ class PageObject:
         else:
 
             raise NoSuchElementException
-
-
