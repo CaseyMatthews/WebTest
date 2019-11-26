@@ -23,6 +23,8 @@ class ElementMetaData:
 
         self.css_selector = css_selector
 
+        # TODO: Implement more meta-data into this object (like link url) to minimize maintenance?
+
     def print(self):
 
         print("               ID: ", self.id)

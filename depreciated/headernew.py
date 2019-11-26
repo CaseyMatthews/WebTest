@@ -9,7 +9,6 @@ class Header(Page):
 
         super().__init__(url, driver)
 
-        # TODO: Look into converting dictionary to class member variables.
         self.elements = {
 
             # Sister site links.

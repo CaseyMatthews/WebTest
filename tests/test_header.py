@@ -3,7 +3,7 @@ from header import Header
 from webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import \
-    ElementNotInteractableException, NoSuchElementException
+    ElementNotInteractableException
 
 
 class MyTestCase(unittest.TestCase):
@@ -29,6 +29,31 @@ class MyTestCase(unittest.TestCase):
     def tearDown(self):
 
         pass
+
+    #########################
+    # Test Template Methods #
+    #########################
+
+    def dropdown_link(self, nav_item, dropdown_item, url):
+
+        # The navigation dropdown link is not displayed by default.
+        self.assertFalse(dropdown_item.is_displayed())
+
+        # Hover over the navigation menu item.
+        self.driver.hover_over(nav_item)
+
+        # The navigation dropdown link is now displayed.
+        self.assertTrue(dropdown_item.is_displayed())
+
+        # Click the navigation dropdown link.
+        dropdown_item.click()
+
+        # The appropriate python.org associated web page is navigated to.
+        self.assertTrue(url, self.driver.current_url)
+
+    #########
+    # Tests #
+    #########
 
     def test_page_loaded(self):
 
@@ -281,73 +306,45 @@ class MyTestCase(unittest.TestCase):
 
     def test_downloads_all_releases(self):
 
-        # All releases link is not displayed by default.
-        self.assertFalse(self.header.nav_downloads_all_releases.is_displayed())
-
-        # Hover over the Downloads dropdown in the navigation menu.
-        self.driver.hover_over(self.header.nav_downloads)
-
-        # All releases link is now displayed.
-        self.assertTrue(self.header.nav_downloads_all_releases.is_displayed())
-
-        # Click the all releases link.
-        self.header.nav_downloads_all_releases.click()
-
-        # The Python.org Downloads page is navigated to.
-        self.assertTrue('https://www.python.org/downloads/', self.driver.current_url)
+        self.dropdown_link(self.header.nav_downloads,
+                           self.header.nav_downloads_all_releases,
+                           'https://www.python.org/downloads/')
 
     def test_downloads_source_code(self):
 
-        # The source code link is not displayed by default.
-        self.assertFalse(self.header.nav_downloads_source_code.is_displayed())
-
-        # Hover over the Downloads dropdown in the navigation menu.
-        self.driver.hover_over(self.header.nav_downloads)
-
-        # The source code link is now displayed.
-        self.assertTrue(self.header.nav_downloads_source_code.is_displayed())
-
-        # Click the source code link.
-        self.header.nav_downloads_source_code.click()
-
-        # The Python.org source releases page is navigated to.
-        self.assertTrue('https://www.python.org/downloads/source/', self.driver.current_url)
+        self.dropdown_link(self.header.nav_downloads,
+                           self.header.nav_downloads_source_code,
+                           'https://www.python.org/downloads/source/')
 
     def test_downloads_windows(self):
 
-        # The Windows link in Downloads is not displayed by default.
-        self.assertFalse(self.header.nav_downloads_windows.is_displayed())
-
-        # Hover over Downloads in the navigation menu.
-        self.driver.hover_over(self.header.nav_downloads)
-
-        # The Windows link is now displayed.
-        self.assertTrue(self.header.nav_downloads_windows.is_displayed())
-
-        # Click the Windows link.
-        self.header.nav_downloads_windows.click()
-
-        # The python.org Windows Release page is navigated to.
-        self.assertTrue('https://www.python.org/downloads/windows/', self.driver.current_url)
+        self.dropdown_link(self.header.nav_downloads,
+                           self.header.nav_downloads_windows,
+                           'https://www.python.org/downloads/windows/')
 
     def test_downloads_mac(self):
 
-        # The Mac OS X link is not displayed by default.
-        self.assertFalse(self.header.nav_downloads_mac.is_displayed())
+        self.dropdown_link(self.header.nav_downloads,
+                           self.header.nav_downloads_mac,
+                           'https://www.python.org/downloads/mac-osx/')
 
-        # Hover over Downloads in the navigation menu.
-        self.driver.hover_over(self.header.nav_downloads)
+    def test_downloads_other_platforms(self):
 
-        # The Mac OS X link is now displayed.
-        self.assertTrue(self.header.nav_downloads_mac.is_displayed())
+        self.dropdown_link(self.header.nav_downloads,
+                           self.header.nav_downloads_other_platforms,
+                           'https://www.python.org/download/other/')
 
-        # Click the Mac OS X link.
-        self.header.nav_downloads_mac.click()
+    def test_downloads_license(self):
 
-        # The Python.org Release for Mac OS X page is navigated to.
-        self.assertTrue('https://www.python.org/downloads/mac-osx/', self.driver.current_url)
+        self.dropdown_link(self.header.nav_downloads,
+                           self.header.nav_downloads_license,
+                           'https://www.python.org/download/other/')
 
+    def test_downloads_alternative_implementation(self):
 
+        self.dropdown_link(self.header.nav_downloads,
+                           self.header.nav_downloads_alt_imps,
+                           'https://www.python.org/download/alternatives/')
 
     def test_documentation_docs_not_displayed(self):
 

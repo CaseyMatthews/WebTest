@@ -62,7 +62,6 @@ class Page:
     # Private helper methods.
     #########################
 
-    # TODO: Implement error handling and selector priority.
     def _get_element(self, element):
 
         if element.id:

@@ -87,7 +87,6 @@ class Header(PageObject):
 
         self.nav_about_py_brochure = ElementMetaData(xpath='//*[@id="about"]/ul/li[5]/a')
 
-        # TODO: Investigate why this element cannot be located by xpath fix.
         self.nav_about_learn_more = ElementMetaData(xpath='//*[@id="about"]/ul/li[6]/p/a')
 
         # Downloads sub-menu elements.
