@@ -140,6 +140,68 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual('https://www.python.org/', self.driver.current_url)
 
+    def test_about_applications_link_not_displayed(self):
+
+        self.assertFalse(self.header.nav_about_apps.is_displayed())
+
+    def test_about_quotes_link_not_displayed(self):
+
+        self.assertFalse(self.header.nav_about_quotes.is_displayed())
+
+    def test_about_getting_started_link_not_displayed(self):
+
+        self.assertFalse(
+            self.header.nav_about_getting_started.is_displayed())
+
+    def test_about_help_link_not_displayed(self):
+
+        self.assertFalse(self.header.nav_about_help.is_displayed())
+
+    def test_about_python_brochure_link_not_displayed(self):
+
+        self.assertFalse(self.header.nav_about_py_brochure.is_displayed())
+
+    def test_about_learn_more_link_not_displayed(self):
+
+        self.assertFalse(self.header.nav_about_learn_more.is_displayed())
+
+    def test_about_applications_display_on_hover(self):
+
+        self.driver.hover_over(self.header.nav_about)
+
+        self.assertTrue(self.header.nav_about_apps.is_displayed())
+
+    def test_about_quotes_display_on_hover(self):
+
+        self.driver.hover_over(self.header.nav_about)
+
+        self.assertTrue(self.header.nav_about_quotes.is_displayed())
+
+    def test_about_getting_started_display_on_hover(self):
+
+        self.driver.hover_over(self.header.nav_about)
+
+        self.assertTrue(
+            self.header.nav_about_getting_started.is_displayed())
+
+    def test_about_help_display_on_hover(self):
+
+        self.driver.hover_over(self.header.nav_about)
+
+        self.assertTrue(self.header.nav_about_help.is_displayed())
+
+    def test_about_python_brochure_display_on_hover(self):
+
+        self.driver.hover_over(self.header.nav_about)
+
+        self.assertTrue(self.header.nav_about_py_brochure.is_displayed())
+
+    def test_about_learn_more_display_on_hover(self):
+
+        self.driver.hover_over(self.header.nav_about)
+
+        self.assertTrue(self.header.nav_about_learn_more.is_displayed())
+
 
 if __name__ == '__main__':
 
