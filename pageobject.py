@@ -19,6 +19,10 @@ class PageObject:
 
         return item
 
+    def get(self, attribute):
+
+        return object.__getattribute__(self, attribute).xpath
+
     # TODO: Implement error handling and selector priority.
     def _get_element(self, element):
 

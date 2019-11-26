@@ -2,7 +2,9 @@ import unittest
 from header import Header
 from webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import ElementNotInteractableException
+from selenium.common.exceptions import \
+    ElementNotInteractableException, NoSuchElementException
+from time import sleep
 
 
 class MyTestCase(unittest.TestCase):
@@ -11,6 +13,8 @@ class MyTestCase(unittest.TestCase):
     def setUpClass(cls):
 
         cls.driver = WebDriver()
+
+        cls.driver.implicitly_wait(5)
 
         cls.header = Header(cls.driver)
 
@@ -80,25 +84,35 @@ class MyTestCase(unittest.TestCase):
         self.assertRaises(ElementNotInteractableException,
                           self.driver.click, self.header.irc_link)
 
-    def test_social_links_no_hover_not_displayed(self):
+    def test_social_twitter_link_not_displayed(self):
 
         self.assertFalse(self.header.twitter_link.is_displayed())
 
+    def test_social_facebook_link_not_displayed(self):
+
         self.assertFalse(self.header.facebook_link.is_displayed())
+
+    def test_social_irc_link_not_displayed(self):
 
         # self.assertFalse(self.header._get_element(self.header.irc_link).is_displayed())
 
         self.assertFalse(self.header.irc_link.is_displayed())
 
-    def test_social_links_display_on_hover(self):
-
-        self.test_social_links_no_hover_not_displayed()
+    def test_social_twitter_display_on_hover(self):
 
         self.driver.hover_over(self.header.social_drop_down)
 
         self.assertTrue(self.header.twitter_link.is_displayed())
 
+    def test_social_facebook_display_on_hover(self):
+
+        self.driver.hover_over(self.header.social_drop_down)
+
         self.assertTrue(self.header.facebook_link.is_displayed())
+
+    def test_social_irc_display_on_hover(self):
+
+        self.driver.hover_over(self.header.social_drop_down)
 
         self.assertTrue(self.header.irc_link.is_displayed())
 

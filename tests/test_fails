@@ -1,0 +1,29 @@
+import unittest
+from header import Header
+from webdriver import WebDriver
+from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import \
+    ElementNotInteractableException, NoSuchElementException
+
+
+class MyTestCase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+
+        cls.driver = WebDriver()
+
+        cls.driver.implicitly_wait(5)
+
+        cls.header = Header(cls.driver)
+
+    @classmethod
+    def tearDownClass(cls):
+
+        cls.driver.close()
+
+    def test_about_learn_more_not_dipslayed(self):
+
+        self.assertRaises(NoSuchElementException,
+                              self.driver.find_element_by_xpath,
+                              self.header.get('nav_about_learn_more'))
