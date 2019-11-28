@@ -394,6 +394,54 @@ class MyTestCase(unittest.TestCase):
                            self.header.nav_comm_code_of_conduct,
                            'https://www.python.org/psf/conduct/')
 
+    def test_success_stories_arts(self):
+
+        self.dropdown_link(self.header.nav_success_stories,
+                           self.header.nav_success_stories_arts,
+                           'https://www.python.org/success-stories/category/arts/')
+
+    def test_success_stories_business(self):
+
+        self.dropdown_link(self.header.nav_success_stories,
+                           self.header.nav_success_stories_business,
+                           'https://www.python.org/success-stories/category/business/')
+
+    def test_success_stories_education(self):
+
+        self.dropdown_link(self.header.nav_success_stories,
+                           self.header.nav_success_stories_education,
+                           'https://www.python.org/success-stories/category/education/')
+
+    def test_success_stories_engineering(self):
+
+        self.dropdown_link(self.header.nav_success_stories,
+                           self.header.nav_success_stories_engineering,
+                           'https://www.python.org/success-stories/category/engineering/')
+
+    def test_success_stories_government(self):
+
+        self.dropdown_link(self.header.nav_success_stories,
+                           self.header.nav_success_stories_government,
+                           'https://www.python.org/success-stories/category/government/')
+
+    def test_success_stories_scientific(self):
+
+        self.dropdown_link(self.header.nav_success_stories,
+                           self.header.nav_success_stories_scientific,
+                           'https://www.python.org/success-stories/category/scientific/')
+
+    def test_success_stories_software_development(self):
+
+        self.dropdown_link(self.header.nav_success_stories,
+                           self.header.nav_success_stories_sw_dev,
+                           'https://www.python.org/success-stories/category/software-development/')
+
+    def test_success_stories_Microsoft(self):
+
+        self.dropdown_link(self.header.nav_success_stories,
+                           self.header.nav_success_stories_microsoft,
+                           'https://azure.microsoft.com/en-us/develop/python/')
+
 
 if __name__ == '__main__':
 
