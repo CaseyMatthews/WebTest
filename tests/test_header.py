@@ -442,6 +442,36 @@ class MyTestCase(unittest.TestCase):
                            self.header.nav_success_stories_microsoft,
                            'https://azure.microsoft.com/en-us/develop/python/')
 
+    def test_news_python_events(self):
+
+        self.dropdown_link(self.header.nav_news,
+                           self.header.nav_news_py_news,
+                           'https://www.python.org/blogs/')
+
+    def test_news_psf_newsletter(self):
+
+        self.dropdown_link(self.header.nav_news,
+                           self.header.nav_news_psf_newsletter,
+                           'https://www.python.org/psf/newsletter/')
+
+    def test_news_community_news(self):
+
+        self.dropdown_link(self.header.nav_news,
+                           self.header.nav_news_community_news,
+                           'https://planetpython.org/')
+
+    def test_news_psf_news(self):
+
+        self.dropdown_link(self.header.nav_news,
+                           self.header.nav_news_psf_news,
+                           'http://pyfound.blogspot.com/')
+
+    def test_news_pycon_news(self):
+
+        self.dropdown_link(self.header.nav_news,
+                           self.header.nav_news_pycon_news,
+                           'https://www.python.org/blogs/')
+
 
 if __name__ == '__main__':
 
