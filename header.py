@@ -5,7 +5,7 @@ from webdriver import WebDriver
 
 class Header(PageObject):
 
-    def __init__(self, driver: object) -> object:
+    def __init__(self, driver: object):
 
         super().__init__(driver)
 

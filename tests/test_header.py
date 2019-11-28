@@ -45,11 +45,26 @@ class MyTestCase(unittest.TestCase):
         # The navigation dropdown link is now displayed.
         self.assertTrue(dropdown_item.is_displayed())
 
+        # TODO: The link has the appropriate text.
+
         # Click the navigation dropdown link.
         dropdown_item.click()
 
         # The appropriate python.org associated web page is navigated to.
-        self.assertTrue(url, self.driver.current_url)
+        self.assertEqual(url, self.driver.current_url)
+
+    def link(self, link, url):
+
+        # The link is displayed by default.
+        self.assertTrue(link.is_displayed())
+
+        # TODO: The link displays the appropriate text.
+
+        # Click the link.
+        link.click()
+
+        # The appropriate page is navigated to.
+        self.assertEqual(url, self.driver.current_url)
 
     #########
     # Tests #
@@ -102,67 +117,30 @@ class MyTestCase(unittest.TestCase):
         self.assertRaises(ElementNotInteractableException,
                           self.driver.click, self.header.irc_link)
 
-    def test_social_twitter_link_not_displayed(self):
-
-        self.assertFalse(self.header.twitter_link.is_displayed())
-
-    def test_social_facebook_link_not_displayed(self):
-
-        self.assertFalse(self.header.facebook_link.is_displayed())
-
-    def test_social_irc_link_not_displayed(self):
-
-        # self.assertFalse(self.header._get_element(self.header.irc_link).is_displayed())
-
-        self.assertFalse(self.header.irc_link.is_displayed())
-
-    def test_social_twitter_display_on_hover(self):
-
-        self.driver.hover_over(self.header.social_drop_down)
-
-        self.assertTrue(self.header.twitter_link.is_displayed())
-
-    def test_social_facebook_display_on_hover(self):
-
-        self.driver.hover_over(self.header.social_drop_down)
-
-        self.assertTrue(self.header.facebook_link.is_displayed())
-
-    def test_social_irc_display_on_hover(self):
-
-        self.driver.hover_over(self.header.social_drop_down)
-
-        self.assertTrue(self.header.irc_link.is_displayed())
-
     def test_sister_site_link_psf(self):
 
-        self.header.sister_site_psf.click()
-
-        self.assertEqual('https://www.python.org/psf-landing/', self.driver.current_url)
+        self.link(self.header.sister_site_psf,
+                  'https://www.python.org/psf-landing/')
 
     def test_sister_site_link_docs(self):
 
-        self.header.sister_site_docs.click()
-
-        self.assertEqual('https://docs.python.org/3/', self.driver.current_url)
+        self.link(self.header.sister_site_docs,
+                  'https://docs.python.org/3/')
 
     def test_sister_site_link_pypi(self):
 
-        self.header.sister_site_pypi.click()
-
-        self.assertEqual('https://pypi.org/', self.driver.current_url)
+        self.link(self.header.sister_site_pypi,
+                  'https://pypi.org/')
 
     def test_sister_site_link_jobs(self):
 
-        self.header.sister_site_jobs.click()
-
-        self.assertEqual('https://www.python.org/jobs/', self.driver.current_url)
+        self.link(self.header.sister_site_jobs,
+                  'https://www.python.org/jobs/')
 
     def test_sister_site_link_community(self):
 
-        self.header.sister_site_shop.click()
-
-        self.assertEqual('https://www.python.org/community/', self.driver.current_url)
+        self.link(self.header.sister_site_shop,
+                  'https://www.python.org/community/')
 
     def test_sister_site_link_python(self):
 
@@ -242,7 +220,7 @@ class MyTestCase(unittest.TestCase):
 
         self.dropdown_link(self.header.nav_downloads,
                            self.header.nav_downloads_license,
-                           'https://www.python.org/download/other/')
+                           'https://docs.python.org/3/license.html')
 
     def test_downloads_alternative_implementation(self):
 
@@ -470,7 +448,37 @@ class MyTestCase(unittest.TestCase):
 
         self.dropdown_link(self.header.nav_news,
                            self.header.nav_news_pycon_news,
-                           'https://www.python.org/blogs/')
+                           'https://pycon.blogspot.com/')
+
+    def test_events_python_events(self):
+
+        self.dropdown_link(self.header.nav_events,
+                           self.header.nav_events_py_events,
+                           'https://www.python.org/events/python-events')
+
+    def test_events_user_group_events(self):
+
+        self.dropdown_link(self.header.nav_events,
+                           self.header.nav_events_user_group_events,
+                           'https://www.python.org/events/python-user-group/')
+
+    def test_events_python_events_archive(self):
+
+        self.dropdown_link(self.header.nav_events,
+                           self.header.nav_events_py_events_archive,
+                           'https://www.python.org/events/python-events/past/')
+
+    def test_events_user_group_events_archive(self):
+
+        self.dropdown_link(self.header.nav_events,
+                           self.header.nav_events_user_group_events_archive,
+                           'https://www.python.org/events/python-user-group/past/')
+
+    def test_events_submit_an_event(self):
+
+        self.dropdown_link(self.header.nav_events,
+                           self.header.nav_events_submit_event,
+                           'https://wiki.python.org/moin/PythonEventsCalendar#Submitting_an_Event')
 
 
 if __name__ == '__main__':
