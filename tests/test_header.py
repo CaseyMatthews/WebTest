@@ -53,12 +53,13 @@ class MyTestCase(unittest.TestCase):
         # The appropriate python.org associated web page is navigated to.
         self.assertEqual(url, self.driver.current_url)
 
-    def link(self, link, url):
+    def link(self, link, display_text, url):
 
         # The link is displayed by default.
         self.assertTrue(link.is_displayed())
 
         # TODO: The link displays the appropriate text.
+        self.assertEqual(link.text, display_text)
 
         # Click the link.
         link.click()
@@ -120,26 +121,31 @@ class MyTestCase(unittest.TestCase):
     def test_sister_site_link_psf(self):
 
         self.link(self.header.sister_site_psf,
+                  'PSF',
                   'https://www.python.org/psf-landing/')
 
     def test_sister_site_link_docs(self):
 
         self.link(self.header.sister_site_docs,
+                  'Docs',
                   'https://docs.python.org/3/')
 
     def test_sister_site_link_pypi(self):
 
         self.link(self.header.sister_site_pypi,
+                  'PyPI',
                   'https://pypi.org/')
 
     def test_sister_site_link_jobs(self):
 
         self.link(self.header.sister_site_jobs,
+                  'Jobs',
                   'https://www.python.org/jobs/')
 
     def test_sister_site_link_community(self):
 
         self.link(self.header.sister_site_shop,
+                  'Community',
                   'https://www.python.org/community/')
 
     def test_sister_site_link_python(self):
