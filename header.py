@@ -47,11 +47,14 @@ class Header(PageObject):
 
         self.social_drop_down = ElementMetaData(class_name='winkwink-nudgenudge')
 
-        self.facebook_link = ElementMetaData(class_name='icon-facebook')
+        self.facebook_link = ElementMetaData(
+            xpath='//*[@id="touchnav-wrapper"]/header/div/div[1]/div/div[2]/ul/li/ul/li[1]/a')
 
-        self.twitter_link = ElementMetaData(class_name='icon-twitter')
+        self.twitter_link = ElementMetaData(
+            xpath='//*[@id="touchnav-wrapper"]/header/div/div[1]/div/div[2]/ul/li/ul/li[2]/a')
 
-        self.irc_link = ElementMetaData(class_name='icon-freenode')
+        self.irc_link = ElementMetaData(
+            xpath='//*[@id="touchnav-wrapper"]/header/div/div[1]/div/div[2]/ul/li/ul/li[3]/a')
 
         ##########################
         # Navigation bar elements.
