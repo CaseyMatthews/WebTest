@@ -1,9 +1,8 @@
-from pageobject import PageObject
+from header import Header
 from elementmetadata import ElementMetaData
-from webdriver import WebDriver
 
 
-class LandingPageSubHeader(PageObject):
+class LandingPageSubHeader(Header):
 
     def __init__(self, driver: object):
 
@@ -20,3 +19,5 @@ class LandingPageSubHeader(PageObject):
         self.link_4 = ElementMetaData(xpath='//*[@id="dive-into-python"]/ol/li[4]/a')
 
         self.link_5 = ElementMetaData(xpath='//*[@id="dive-into-python"]/ol/li[5]/a')
+
+        self.console = ElementMetaData(xpath='//*[@id="dive-into-python"]/iframe')

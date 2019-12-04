@@ -45,7 +45,6 @@ class MyTestCase(unittest.TestCase):
         # The navigation dropdown link is now displayed.
         self.assertTrue(dropdown_item.is_displayed())
 
-        # TODO: The link has the appropriate text.
         self.assertEqual(dropdown_item.text, display_text)
 
         # Click the navigation dropdown link.

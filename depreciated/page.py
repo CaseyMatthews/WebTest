@@ -1,5 +1,5 @@
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import ElementNotInteractableException, NoSuchElementException
+from selenium.common.exceptions import ElementNotInteractableException
 
 
 class Page:

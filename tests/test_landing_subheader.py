@@ -1,11 +1,7 @@
 import unittest
 from landingpagesubheader import LandingPageSubHeader
 from webdriver import WebDriver
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import \
-    ElementNotInteractableException
-
-from time import sleep
+from tests.templatemethods import TemplateMethods as tmp
 
 
 class LandingPageSubHeaderTests(unittest.TestCase):
@@ -14,7 +10,7 @@ class LandingPageSubHeaderTests(unittest.TestCase):
     def setUpClass(cls):
         cls.driver = WebDriver()
 
-        cls.driver.implicitly_wait(5)
+        cls.driver.implicitly_wait(10)
 
         cls.subhdr = LandingPageSubHeader(cls.driver)
 
@@ -31,6 +27,10 @@ class LandingPageSubHeaderTests(unittest.TestCase):
     def test_launch_shell_button(self):
 
         self.subhdr.launch_shell.click()
+
+        self.driver.switch_to.frame(self.subhdr.console)
+
+        self.assertIn('>>>', self.driver.page_source)
 
 
 if __name__ == '__main__':
