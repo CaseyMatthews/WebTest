@@ -194,7 +194,7 @@ class MyTestCase(unittest.TestCase):
         self.dropdown_link(self.header.nav_about,
                            self.header.nav_about_py_brochure,
                            'Python Brochure',
-                           'https://brochure.getpython.info/')
+                           'http://brochure.getpython.info/')
 
     def test_about_learn_more(self):
 
